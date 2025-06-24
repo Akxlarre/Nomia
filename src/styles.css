@@ -1,0 +1,149 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: nomialight --default, nomiadark --prefersdark;
+}
+  
+  /* Tema claro personalizado */
+  @plugin "daisyui/theme" {
+    name: "nomialight";
+    default: true;              /* Usar por defecto en modo claro */
+    prefersdark: false;         /* No es el tema oscuro por defecto */
+    color-scheme: light;        /* Indica al navegador que este es un tema claro */
+  
+    --color-base-100: oklch(98% 0.02 40);
+    --color-base-200: oklch(95% 0.03 280);
+    --color-base-300: oklch(90% 0.05 330);
+    --color-base-content: oklch(30% 0.07 300);
+  
+    --color-primary: oklch(40% 0.20 280);
+    --color-primary-content: oklch(98% 0.01 280);
+    --color-secondary: oklch(65% 0.10 300);
+    --color-secondary-content: oklch(20% 0.05 300);
+    --color-accent: oklch(85% 0.15 350);
+    --color-accent-content: oklch(20% 0.05 350);
+  
+    --color-info: oklch(90% 0.10 230);
+    --color-info-content: oklch(20% 0.05 230);
+    --color-success: oklch(90% 0.10 140);
+    --color-success-content: oklch(20% 0.05 140);
+    --color-warning: oklch(90% 0.10 80);
+    --color-warning-content: oklch(20% 0.05 80);
+    --color-error: oklch(90% 0.10 30);
+    --color-error-content: oklch(20% 0.05 30);
+  
+    /* Opcional: personalizar radius, etc. */
+    --radius-box: 0.5rem;       /* Bordes ligeramente redondeados para suavidad */
+    --radius-btn: 0.25rem;
+    --border: 1px;
+    --focus-ring: 0 0 0 0.2rem rgba(250, 238, 255, 0.4); /* Ej. anillo focus lila translúcido */
+  }
+  
+  /* Tema oscuro personalizado */
+  @plugin "daisyui/theme" {
+    name: "nomiadark";
+    prefersdark: true;          /* Tema por defecto si SO en modo oscuro */
+    default: false;
+    color-scheme: dark;
+  
+    --color-base-100: oklch(10% 0.10 280);
+    --color-base-200: oklch(15% 0.10 280);
+    --color-base-300: oklch(25% 0.08 280);
+    --color-base-content: oklch(95% 0.02 80);
+  
+    --color-primary: oklch(80% 0.10 350);
+    --color-primary-content: oklch(20% 0.05 350);
+    --color-secondary: oklch(70% 0.10 300);
+    --color-secondary-content: oklch(20% 0.05 300);
+    --color-accent: oklch(60% 0.20 250);
+    --color-accent-content: oklch(20% 0.05 250);
+  
+    --color-info: oklch(40% 0.20 230);
+    --color-info-content: oklch(90% 0.02 230);
+    --color-success: oklch(35% 0.20 140);
+    --color-success-content: oklch(90% 0.02 140);
+    --color-warning: oklch(45% 0.20 80);
+    --color-warning-content: oklch(95% 0.02 80);
+    --color-error: oklch(40% 0.20 30);
+    --color-error-content: oklch(95% 0.02 30);
+  
+    --radius-box: 0.5rem;
+    --radius-btn: 0.25rem;
+    --border: 1px;
+    --focus-ring: 0 0 0 0.2rem rgba(255, 223, 240, 0.2);
+  }
+
+  /* 
+  🎨 PALETA PERSONALIZADA DE COLORES OKLCH – NOMIA (Light & Dark)
+  Sistema de diseño emocional, ritual y accesible con enfoque espiritual femenino y simbólico.
+
+  Esta paleta define dos temas: “nomialight” (modo claro) y “nomiadark” (modo oscuro).
+  Cada color está expresado en OKLCH para mayor control perceptual.
+
+  ════════════════════════════════════
+  🌤 TEMA CLARO – NOMIA LIGHT
+  ════════════════════════════════════
+
+  --color-base-100: fondo general. Blanco cálido con un tinte suave, usado en body, layout principal.
+  --color-base-200: fondos secundarios como tarjetas elevadas, formularios, zonas neutras.
+  --color-base-300: separación visual ligera entre secciones (ej. inputs, tablas, widgets).
+  --color-base-content: texto principal oscuro sobre fondo claro (texto cuerpo, encabezados, UI importante).
+
+  --color-primary: color violeta profundo – botón primario, íconos activos, enlaces destacados.
+  --color-primary-content: texto blanco lila sobre fondo primary (por ejemplo: texto dentro de botón primario).
+
+  --color-secondary: lavanda humo – botones secundarios, etiquetas suaves, ítems neutros visuales.
+  --color-secondary-content: texto violeta muy oscuro sobre fondo lavanda, garantiza legibilidad ritual.
+
+  --color-accent: rosa suave pastel – acentos decorativos (badges, toggles, detalles gráficos).
+  --color-accent-content: texto o íconos oscuros sobre rosa claro (p. ej. dentro de chips).
+
+  --color-info: azul celeste pastel – mensajes informativos (tooltips, ayudas, descripciones).
+  --color-info-content: texto oscuro sobre azul claro (ej. dentro de alert-info).
+
+  --color-success: verde menta claro – confirmaciones positivas, formularios enviados.
+  --color-success-content: texto sobre fondo success (verde pastel).
+
+  --color-warning: amarillo crema – advertencias no críticas (ej. campos opcionales faltantes).
+  --color-warning-content: texto oscuro sobre amarillo pastel.
+
+  --color-error: rosa salmón suave – errores y validaciones negativas.
+  --color-error-content: texto oscuro sobre fondo error.
+
+  ✨ Este tema busca transmitir calma, calidez emocional y claridad ritual. Ideal para contextos diurnos o visuales etéreos.
+
+  ════════════════════════════════════
+  🌙 TEMA OSCURO – NOMIA DARK
+  ════════════════════════════════════
+
+  --color-base-100: fondo general (casi negro con matiz violeta). Ideal para pantallas nocturnas.
+  --color-base-200: tarjetas oscuras elevadas, modales, zonas con separación leve.
+  --color-base-300: fondos secundarios (ej. contenedores secundarios dentro de tarjetas).
+  --color-base-content: texto general blanco cálido con tinte dorado – más suave para leer que blanco puro.
+
+  --color-primary: rosa suave luminoso – botón principal y elementos destacados en tema oscuro.
+  --color-primary-content: texto oscuro sobre botón rosa claro.
+
+  --color-secondary: lavanda claro – componentes secundarios (pestañas, switches).
+  --color-secondary-content: texto oscuro violeta sobre fondo lavanda.
+
+  --color-accent: azul violáceo medio – detalles decorativos y visuales importantes (p. ej. íconos de conexión).
+  --color-accent-content: texto oscuro o ícono sobre fondo azul accent.
+
+  --color-info: azul cielo oscuro – información secundaria o estados no críticos.
+  --color-info-content: texto blanco claro sobre azul oscuro.
+
+  --color-success: verde bosque – éxito discreto y elegante en fondo oscuro.
+  --color-success-content: texto menta claro sobre fondo success.
+
+  --color-warning: mostaza apagado – advertencia visual leve.
+  --color-warning-content: texto crema sobre fondo mostaza.
+
+  --color-error: vino oscuro – errores, validación fallida, interrupciones.
+  --color-error-content: texto rosado claro sobre fondo error.
+
+  ✨ Este tema transmite introspección, profundidad emocional y misticismo. Ideal para entornos nocturnos o inmersivos.
+
+  📌 Ambas paletas cumplen accesibilidad WCAG 2.1 (contraste ≥ 4.5:1).
+  📌 Cada variable está pensada para fluir visual y emocionalmente con la experiencia del test y resultado simbólico.
+*/
