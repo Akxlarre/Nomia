@@ -6,7 +6,7 @@ import { ThemeService } from '../../theme/services/theme.service';
   selector: 'app-header',
   imports: [RouterModule, ],
   template: `
-    <header class="navbar bg-base-200 text-base-content shadow-sm">
+    <header class="navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-sm shadow-sm transition-all">
       <div class="flex-1">
         <a routerLink="/" class="text-xl font-serif tracking-wide">Nomia 🌿</a>
       </div>

@@ -7,12 +7,13 @@ import { NatalCardComponent, SecondaryButtonComponent } from '../../shared/compo
   selector: 'app-premium-card-preview',
   imports: [RouterModule, NatalCardComponent, SecondaryButtonComponent],
   template: `
-    <section class="py-16 px-6 text-center">
+    <section class="relative py-16 px-6 text-center">
+      <div class="absolute -top-10 right-10 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
       <div class="max-w-md mx-auto">
-        <ui-natal-card name="Tu Nombre">
+        <ui-natal-card name="Tu Nombre" class="animate-fade-in-up">
           <p class="text-lg font-serif italic">Tu carta personalizada te espera…</p>
         </ui-natal-card>
-        <a routerLink="/test" class="btn btn-secondary mt-6">Descubre tu nombre</a>
+        <a routerLink="/test" class="btn btn-secondary mt-6 delay-300 animate-fade-in">Descubre tu nombre</a>
       </div>
     </section>
   `,
