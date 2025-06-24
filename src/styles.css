@@ -1,14 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: nomialight --default, nomiadark --prefersdark;
+  themes: false;
 }
   
   /* Tema claro personalizado */
   @plugin "daisyui/theme" {
     name: "nomialight";
-    default: true;              /* Usar por defecto en modo claro */
-    prefersdark: false;         /* No es el tema oscuro por defecto */
     color-scheme: light;        /* Indica al navegador que este es un tema claro */
   
     --color-base-100: oklch(98% 0.02 40);
@@ -42,8 +40,6 @@
   /* Tema oscuro personalizado */
   @plugin "daisyui/theme" {
     name: "nomiadark";
-    prefersdark: true;          /* Tema por defecto si SO en modo oscuro */
-    default: false;
     color-scheme: dark;
   
     --color-base-100: oklch(10% 0.10 280);
