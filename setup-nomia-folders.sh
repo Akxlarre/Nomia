@@ -20,7 +20,6 @@ touch $BASE/shared/models/quiz-profile.model.ts
 # Theme
 mkdir -p $BASE/theme/{tokens,services,utils}
 touch $BASE/theme/services/theme.service.ts
-touch $BASE/theme/tokens/colors.ts
 
 # Layout
 mkdir -p $BASE/layout/{components,pages}
@@ -34,7 +33,6 @@ touch $BASE/home/pages/home.page.ts
 # Test (quiz emocional)
 mkdir -p $BASE/test/{pages,components,services}
 touch $BASE/test/pages/test.page.ts
-touch $BASE/test/components/question.component.ts
 touch $BASE/test/services/quiz.service.ts
 
 # Result (vista premium)
@@ -65,7 +63,6 @@ touch $BASE/data/names/nombres-curados.json
 
 # Utils (animaciones globales, helpers)
 mkdir -p $BASE/utils/animations
-touch $BASE/utils/animations/fade-in.animation.ts
 
 # Rutas
 mkdir -p $BASE/routes

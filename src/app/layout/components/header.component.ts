@@ -11,7 +11,7 @@ import { ThemeService } from '../../theme/services/theme.service';
         <a routerLink="/" class="text-xl font-serif tracking-wide">Nomia 🌿</a>
       </div>
       <div class="flex-none gap-2">
-        <button class="btn btn-ghost" (click)="toggleTheme()">
+        <button class="btn btn-ghost transition-all hover:scale-105 focus-visible:ring" (click)="toggleTheme()">
             @if (isDark) {
             <span class="material-icons">dark_mode</span>
             } @else {

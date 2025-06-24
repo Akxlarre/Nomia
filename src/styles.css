@@ -1,14 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: nomialight --default, nomiadark --prefersdark;
+  themes: false;
 }
   
   /* Tema claro personalizado */
   @plugin "daisyui/theme" {
     name: "nomialight";
-    default: true;              /* Usar por defecto en modo claro */
-    prefersdark: false;         /* No es el tema oscuro por defecto */
     color-scheme: light;        /* Indica al navegador que este es un tema claro */
   
     --color-base-100: oklch(98% 0.02 40);
@@ -42,8 +40,6 @@
   /* Tema oscuro personalizado */
   @plugin "daisyui/theme" {
     name: "nomiadark";
-    prefersdark: true;          /* Tema por defecto si SO en modo oscuro */
-    default: false;
     color-scheme: dark;
   
     --color-base-100: oklch(10% 0.10 280);
@@ -147,3 +143,9 @@
   📌 Ambas paletas cumplen accesibilidad WCAG 2.1 (contraste ≥ 4.5:1).
   📌 Cada variable está pensada para fluir visual y emocionalmente con la experiencia del test y resultado simbólico.
 */
+
+@layer components {
+  .ui-natal-card {
+    @apply border border-base-300 rounded-lg p-6 shadow-md bg-gradient-to-br from-primary/10 via-secondary/10 to-base-100 dark:from-fuchsia-900 dark:via-purple-800 dark:to-base-200;
+  }
+}
