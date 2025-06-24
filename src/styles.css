@@ -1,75 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui" {
   themes: false;
 }
-  
-  /* Tema claro personalizado */
-  @plugin "daisyui/theme" {
-    name: "nomialight";
-    color-scheme: light;        /* Indica al navegador que este es un tema claro */
-  
-    --color-base-100: oklch(98% 0.02 40);
-    --color-base-200: oklch(95% 0.03 280);
-    --color-base-300: oklch(90% 0.05 330);
-    --color-base-content: oklch(30% 0.07 300);
-  
-    --color-primary: oklch(40% 0.20 280);
-    --color-primary-content: oklch(98% 0.01 280);
-    --color-secondary: oklch(65% 0.10 300);
-    --color-secondary-content: oklch(20% 0.05 300);
-    --color-accent: oklch(85% 0.15 350);
-    --color-accent-content: oklch(20% 0.05 350);
-  
-    --color-info: oklch(90% 0.10 230);
-    --color-info-content: oklch(20% 0.05 230);
-    --color-success: oklch(90% 0.10 140);
-    --color-success-content: oklch(20% 0.05 140);
-    --color-warning: oklch(90% 0.10 80);
-    --color-warning-content: oklch(20% 0.05 80);
-    --color-error: oklch(90% 0.10 30);
-    --color-error-content: oklch(20% 0.05 30);
-  
-    /* Opcional: personalizar radius, etc. */
-    --radius-box: 0.5rem;       /* Bordes ligeramente redondeados para suavidad */
-    --radius-btn: 0.25rem;
-    --border: 1px;
-    --focus-ring: 0 0 0 0.2rem rgba(250, 238, 255, 0.4); /* Ej. anillo focus lila translúcido */
-  }
-  
-  /* Tema oscuro personalizado */
-  @plugin "daisyui/theme" {
-    name: "nomiadark";
-    color-scheme: dark;
-  
-    --color-base-100: oklch(10% 0.10 280);
-    --color-base-200: oklch(15% 0.10 280);
-    --color-base-300: oklch(25% 0.08 280);
-    --color-base-content: oklch(95% 0.02 80);
-  
-    --color-primary: oklch(80% 0.10 350);
-    --color-primary-content: oklch(20% 0.05 350);
-    --color-secondary: oklch(70% 0.10 300);
-    --color-secondary-content: oklch(20% 0.05 300);
-    --color-accent: oklch(60% 0.20 250);
-    --color-accent-content: oklch(20% 0.05 250);
-  
-    --color-info: oklch(40% 0.20 230);
-    --color-info-content: oklch(90% 0.02 230);
-    --color-success: oklch(35% 0.20 140);
-    --color-success-content: oklch(90% 0.02 140);
-    --color-warning: oklch(45% 0.20 80);
-    --color-warning-content: oklch(95% 0.02 80);
-    --color-error: oklch(40% 0.20 30);
-    --color-error-content: oklch(95% 0.02 30);
-  
-    --radius-box: 0.5rem;
-    --radius-btn: 0.25rem;
-    --border: 1px;
-    --focus-ring: 0 0 0 0.2rem rgba(255, 223, 240, 0.2);
-  }
 
-  /* 
+/* Tema claro personalizado */
+@plugin "daisyui/theme" {
+  name: 'nomialight';
+  color-scheme: light; /* Indica al navegador que este es un tema claro */
+
+  --color-base-100: oklch(98% 0.02 40);
+  --color-base-200: oklch(95% 0.03 280);
+  --color-base-300: oklch(90% 0.05 330);
+  --color-base-content: oklch(30% 0.07 300);
+
+  --color-primary: oklch(40% 0.2 280);
+  --color-primary-content: oklch(98% 0.01 280);
+  --color-secondary: oklch(65% 0.1 300);
+  --color-secondary-content: oklch(20% 0.05 300);
+  --color-accent: oklch(85% 0.15 350);
+  --color-accent-content: oklch(20% 0.05 350);
+
+  --color-info: oklch(90% 0.1 230);
+  --color-info-content: oklch(20% 0.05 230);
+  --color-success: oklch(90% 0.1 140);
+  --color-success-content: oklch(20% 0.05 140);
+  --color-warning: oklch(90% 0.1 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: oklch(90% 0.1 30);
+  --color-error-content: oklch(20% 0.05 30);
+
+  /* Opcional: personalizar radius, etc. */
+  --radius-box: 0.5rem; /* Bordes ligeramente redondeados para suavidad */
+  --radius-btn: 0.25rem;
+  --border: 1px;
+  --focus-ring: 0 0 0 0.2rem rgba(250, 238, 255, 0.4); /* Ej. anillo focus lila translúcido */
+}
+
+/* Tema oscuro personalizado */
+@plugin "daisyui/theme" {
+  name: 'nomiadark';
+  color-scheme: dark;
+
+  --color-base-100: oklch(10% 0.1 280);
+  --color-base-200: oklch(15% 0.1 280);
+  --color-base-300: oklch(25% 0.08 280);
+  --color-base-content: oklch(95% 0.02 80);
+
+  --color-primary: oklch(80% 0.1 350);
+  --color-primary-content: oklch(20% 0.05 350);
+  --color-secondary: oklch(70% 0.1 300);
+  --color-secondary-content: oklch(20% 0.05 300);
+  --color-accent: oklch(60% 0.2 250);
+  --color-accent-content: oklch(20% 0.05 250);
+
+  --color-info: oklch(40% 0.2 230);
+  --color-info-content: oklch(90% 0.02 230);
+  --color-success: oklch(35% 0.2 140);
+  --color-success-content: oklch(90% 0.02 140);
+  --color-warning: oklch(45% 0.2 80);
+  --color-warning-content: oklch(95% 0.02 80);
+  --color-error: oklch(40% 0.2 30);
+  --color-error-content: oklch(95% 0.02 30);
+
+  --radius-box: 0.5rem;
+  --radius-btn: 0.25rem;
+  --border: 1px;
+  --focus-ring: 0 0 0 0.2rem rgba(255, 223, 240, 0.2);
+}
+
+/* 
   🎨 PALETA PERSONALIZADA DE COLORES OKLCH – NOMIA (Light & Dark)
   Sistema de diseño emocional, ritual y accesible con enfoque espiritual femenino y simbólico.
 
@@ -146,6 +146,9 @@
 
 @layer components {
   .ui-natal-card {
-    @apply border border-base-300 rounded-lg p-6 shadow-md bg-gradient-to-br from-primary/10 via-secondary/10 to-base-100 dark:from-fuchsia-900 dark:via-purple-800 dark:to-base-200;
+    @apply p-6 rounded-xl border shadow-md bg-gradient-to-br
+      from-[oklch(98%_0.02_40)] via-[oklch(97%_0.03_310)] to-[oklch(95%_0.03_280)]
+      border-base-300/50 text-base-content
+      dark:from-[oklch(35%_0.05_250)] dark:via-[oklch(25%_0.05_270)] dark:to-[oklch(15%_0.05_240)] dark:border-base-100/20;
   }
 }
