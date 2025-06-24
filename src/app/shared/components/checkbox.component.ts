@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
   template: `
     <label class="label cursor-pointer gap-2">
       <input type="checkbox" class="checkbox transition-colors" [(ngModel)]="checked" />
+
       <span><ng-content></ng-content></span>
     </label>
   `,

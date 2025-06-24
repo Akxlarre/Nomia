@@ -12,6 +12,7 @@ import { NgIf, NgClass } from '@angular/common';
       <button *ngIf="closable" type="button" aria-label="Cerrar" class="btn btn-sm btn-circle btn-ghost ml-2" (click)="visible = false">
         <span class="material-icons text-base-content text-sm">close</span>
       </button>
+
     </div>
   `,
 })
