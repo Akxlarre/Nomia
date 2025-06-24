@@ -4,12 +4,12 @@ import { Component, Input } from '@angular/core';
   selector: 'ui-natal-card',
   standalone: true,
   template: `
-    <div
-      class="card bg-gradient-to-br from-[oklch(98%_0.02_40)] to-[oklch(95%_0.03_280)] text-center shadow-md p-6 rounded-xl"
-    >
-      <h2 class="text-3xl font-serif mb-2">{{ name }}</h2>
-      <div class="text-base mb-4">
-        <ng-content></ng-content>
+    <div class="ui-natal-card card text-center transition-colors">
+      <div class="card-body">
+        <h2 class="text-3xl font-serif mb-2">{{ name }}</h2>
+        <div class="text-base mb-4">
+          <ng-content></ng-content>
+        </div>
       </div>
     </div>
   `,
