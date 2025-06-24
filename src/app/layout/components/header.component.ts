@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../theme/services/theme.service';
 @Component({
@@ -17,9 +17,6 @@ import { ThemeService } from '../../theme/services/theme.service';
             } @else {
             <span class="material-icons">light_mode</span>
             }
-          <ng-template #lightIcon>
-            <span class="material-icons">light_mode</span>
-          </ng-template>
         </button>
       </div>
     </header>
