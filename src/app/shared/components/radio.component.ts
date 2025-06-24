@@ -3,16 +3,17 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
-  selector: 'ui-checkbox',
+  selector: 'ui-radio',
   imports: [FormsModule],
   template: `
     <label class="label cursor-pointer gap-2">
-      <input type="checkbox" class="checkbox transition-colors" [(ngModel)]="checked" />
-
+      <input type="radio" class="radio transition-colors" [name]="name" [(ngModel)]="model" [value]="value" />
       <span><ng-content></ng-content></span>
     </label>
   `,
 })
-export class CheckboxComponent {
-  @Input() checked = false;
+export class RadioComponent {
+  @Input() name = '';
+  @Input() value: any;
+  @Input() model: any;
 }
