@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
   template: `
     <div class="alert" [ngClass]="'alert-' + type">
       <span><ng-content></ng-content></span>
-
     </div>
   `,
 })

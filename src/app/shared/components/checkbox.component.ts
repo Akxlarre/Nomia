@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
         [disabled]="disabled"
         (change)="onChange($event)"
       />
-
       <span><ng-content></ng-content></span>
     </label>
   `,
@@ -28,5 +27,4 @@ export class CheckboxComponent {
     const target = event.target as HTMLInputElement | null;
     this.checkedChange.emit(!!target?.checked);
   }
-
 }
