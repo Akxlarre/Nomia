@@ -1,8 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ui-text-input',
   standalone: true,
+  imports: [CommonModule],
   template: `
     <input
       class="input w-full"
@@ -10,7 +12,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       [placeholder]="placeholder"
       [disabled]="disabled"
       [value]="value"
-      (input)="valueChange.emit(($event.target as HTMLInputElement).value)"
+      (input)="onInput($event)"
     />
   `,
 })
@@ -20,4 +22,9 @@ export class TextInputComponent {
   @Input() disabled = false;
   @Input() value = '';
   @Output() valueChange = new EventEmitter<string>();
+
+  onInput(event: Event) {
+    const target = event.target as HTMLInputElement | null;
+    this.valueChange.emit(target?.value ?? '');
+  }
 }

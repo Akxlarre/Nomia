@@ -1,13 +1,19 @@
-import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: true,
   selector: 'ui-checkbox',
-  imports: [FormsModule],
+  standalone: true,
+  imports: [CommonModule],
   template: `
-    <label class="label cursor-pointer gap-2">
-      <input type="checkbox" class="checkbox transition-colors" [(ngModel)]="checked" />
+    <label class="inline-flex items-center gap-2 cursor-pointer">
+      <input
+        type="checkbox"
+        class="checkbox checkbox-accent"
+        [checked]="checked"
+        [disabled]="disabled"
+        (change)="onChange($event)"
+      />
 
       <span><ng-content></ng-content></span>
     </label>
@@ -15,4 +21,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class CheckboxComponent {
   @Input() checked = false;
+  @Input() disabled = false;
+  @Output() checkedChange = new EventEmitter<boolean>();
+
+  onChange(event: Event) {
+    const target = event.target as HTMLInputElement | null;
+    this.checkedChange.emit(!!target?.checked);
+  }
+
 }
