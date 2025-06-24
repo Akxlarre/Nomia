@@ -143,3 +143,9 @@
   📌 Ambas paletas cumplen accesibilidad WCAG 2.1 (contraste ≥ 4.5:1).
   📌 Cada variable está pensada para fluir visual y emocionalmente con la experiencia del test y resultado simbólico.
 */
+
+@layer components {
+  .ui-natal-card {
+    @apply border border-base-300 rounded-lg p-6 shadow-md bg-gradient-to-br from-primary/10 via-secondary/10 to-base-100 dark:from-fuchsia-900 dark:via-purple-800 dark:to-base-200;
+  }
+}
