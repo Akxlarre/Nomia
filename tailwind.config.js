@@ -6,9 +6,6 @@ module.exports = {
     theme: {
       extend: {},
     },
-    plugins: [require("daisyui")],
-    daisyui: {
-      themes: false, // desactiva todos los temas por defecto
-    },
+    plugins: [],
   };
   
