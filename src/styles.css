@@ -167,9 +167,9 @@
   }
   @keyframes ethereal-entry {
     0% {
-      opacity: 0;
-      transform: translateY(2rem) scale(0.98);
-      filter: blur(8px);
+      opacity: 0.2;
+      transform: translateY(0.5rem) scale(0.999);
+      filter: blur(0.5px);
     }
     100% {
       opacity: 1;
@@ -178,6 +178,6 @@
     }
   }
   .animate-ethereal-entry {
-    animation: ethereal-entry 1s ease-out both;
+    animation: ethereal-entry 0.6s ease-out both;
   }
 }

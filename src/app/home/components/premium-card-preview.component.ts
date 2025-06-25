@@ -13,7 +13,7 @@ import { NatalCardComponent, SecondaryButtonComponent } from '../../shared/compo
         <ui-natal-card name="Tu Nombre" class="animate-fade-in-up">
           <p class="text-lg font-serif italic">Tu carta personalizada te espera…</p>
         </ui-natal-card>
-        <a routerLink="/test" class="btn btn-secondary mt-6 delay-300 animate-fade-in">Descubre tu nombre</a>
+        <a routerLink="/test" class="btn btn-primary mt-6 delay-300 animate-fade-in">Descubre tu nombre</a>
       </div>
     </section>
   `,

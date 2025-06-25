@@ -25,7 +25,7 @@ import { PrimaryButtonComponent } from '../../shared/components';
           routerLink="/test"
           class="btn btn-primary shadow-md transition-all duration-700 ease-out"
         >
-          <span class="mr-1">✨</span> Comenzar el Test
+         Comenzar el Test
         </a>
       </div>
 
