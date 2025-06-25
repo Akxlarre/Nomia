@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./splash-screen.css'],
   imports: [],
 })
-export class SplashScreenComponent {}
+export class SplashScreenComponent {
+  logoSrc = '/assets/img/Logo-ligth.webp';
+  dataTheme = 'nomialight';
+
+  constructor() {
+    const stored = localStorage.getItem('theme');
+    const isDark = stored === 'nomiadark';
+    if (isDark) {
+      this.logoSrc = '/assets/img/logo-dark.webp';
+      this.dataTheme = 'nomiadark';
+    }
+  }
+}

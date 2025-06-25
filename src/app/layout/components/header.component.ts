@@ -4,7 +4,7 @@ import { ThemeService } from '../../theme/services/theme.service';
 @Component({
   standalone: true,
   selector: 'app-header',
-  imports: [RouterModule, ],
+  imports: [RouterModule],
   template: `
     <header
       class="
@@ -19,15 +19,8 @@ import { ThemeService } from '../../theme/services/theme.service';
       <div></div>
 
       <!-- Logo en el centro -->
-      <a
-        routerLink="/"
-        class="justify-self-center"
-      >
-        <img
-          src="assets/img/LogoParaHeader.webp"
-          alt="Logo Nomia"
-          class="h-14 md:h-14 lg:h-14 w-auto"
-        />
+      <a routerLink="/" class="justify-self-center">
+        <img [src]="logoSrc" alt="Logo Nomia" class="h-14 md:h-14 lg:h-14 w-auto" />
       </a>
 
       <!-- Toggle tema a la derecha -->
@@ -48,15 +41,24 @@ import { ThemeService } from '../../theme/services/theme.service';
 })
 export class HeaderComponent {
   isDark = false;
+  logoSrc = 'assets/img/LogoParaHeader.webp';
 
   constructor(private themeService: ThemeService) {
     const stored = localStorage.getItem('theme');
     this.isDark = stored === 'nomiadark';
+    this.updateLogo();
   }
 
   toggleTheme() {
     this.isDark = !this.isDark;
     const nextTheme = this.isDark ? 'nomiadark' : 'nomialight';
     this.themeService.switchTheme(nextTheme);
+    this.updateLogo();
+  }
+
+  private updateLogo() {
+    this.logoSrc = this.isDark
+      ? 'assets/img/LogoParaHeaderDark.webp'
+      : 'assets/img/LogoParaHeader.webp';
   }
 }
