@@ -165,4 +165,19 @@
   .animate-fade-in {
     animation: fade-in 0.7s ease-out both;
   }
+  @keyframes ethereal-entry {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem) scale(0.98);
+      filter: blur(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+  .animate-ethereal-entry {
+    animation: ethereal-entry 1s ease-out both;
+  }
 }
