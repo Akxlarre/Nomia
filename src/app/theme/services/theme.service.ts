@@ -17,5 +17,6 @@ export class ThemeService {
 
   private applyTheme(theme: 'nomialight' | 'nomiadark') {
     document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.classList.toggle('dark', theme === 'nomiadark');
   }
 }

@@ -5,6 +5,7 @@ module.exports = {
   content: [
     "./src/**/*.{html,ts}",
   ],
+  darkMode: ['class', '[data-theme="nomiadark"]'],
   theme: {
     extend: {
       backgroundImage: {
@@ -15,7 +16,9 @@ module.exports = {
   },
   plugins: [daisyui],
   daisyui: {
-    themes: ["nomialight", "nomiadark"],
+    themes: ['nomialight', 'nomiadark'],
+    darkTheme: 'nomiadark',
+    defaultTheme: 'nomialight',
   },
 };
   
