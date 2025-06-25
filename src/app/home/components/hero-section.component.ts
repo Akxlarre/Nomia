@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Inject, DOCUMENT } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PrimaryButtonComponent } from '../../shared/components';
 
@@ -8,10 +8,18 @@ import { PrimaryButtonComponent } from '../../shared/components';
   imports: [RouterModule, PrimaryButtonComponent],
   template: `
     <section
-      class="relative overflow-hidden text-center px-6 py-24 bg-gradient-to-br from-[oklch(98%_0.02_40)] to-[oklch(95%_0.03_280)] transition-all duration-700"
-      [class.opacity-0]="!loaded" [class.translate-y-4]="!loaded">
+      class="relative overflow-hidden text-center px-6 py-24 transition-all duration-700"
+      [class.bg-hero-light]="!isDark"
+      [class.bg-hero-dark]="isDark"
+      [class.text-base-content]="!isDark"
+      [class.text-base-content]="isDark"
+      [class.opacity-0]="!loaded"
+      [class.translate-y-4]="!loaded"
+    >
       <div class="relative z-10 max-w-2xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-serif mb-4">El alma ya conoce su nombre</h1>
+        <h1 class="text-4xl md:text-5xl font-serif mb-4 text-base-content">
+          El alma ya conoce su nombre
+        </h1>
         <p class="text-base md:text-lg mb-8 italic text-base-content/90">
           El alma ya eligió. Solo debes descubrirlo.
         </p>
@@ -24,10 +32,12 @@ import { PrimaryButtonComponent } from '../../shared/components';
           <span class="mr-1">✨</span> Comenzar el Test
         </a>
       </div>
+
+      <!-- Elemento decorativo etéreo -->
       <svg
         aria-hidden="true"
         viewBox="0 0 200 200"
-        class="absolute opacity-10 w-56 h-56 -right-20 -bottom-20 text-secondary animate-pulse-slow"
+        class="absolute opacity-10 dark:opacity-20 w-56 h-56 -right-20 -bottom-20 text-secondary animate-pulse-slow"
       >
         <circle cx="100" cy="100" r="80" fill="currentColor" />
       </svg>
@@ -36,7 +46,21 @@ import { PrimaryButtonComponent } from '../../shared/components';
 })
 export class HeroSectionComponent implements AfterViewInit {
   loaded = false;
+
+  /** Declaramos explícitamente la propiedad */
+  isDark = false;
+
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    // Leemos el modo actual de la etiqueta <html>
+    this.isDark = this.document.documentElement.classList.contains('dark');
+  }
+
   ngAfterViewInit() {
-    setTimeout(() => (this.loaded = true));
+    // Tras el render inicial, lanzamos la animación
+    setTimeout(() => {
+      this.loaded = true;
+      // Por si el usuario cambió el theme justo al cargar
+      this.isDark = this.document.documentElement.classList.contains('dark');
+    }, 10);
   }
 }
