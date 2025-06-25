@@ -3,6 +3,13 @@
     <meta charset="utf-8" />
     <title>Nomia 🌿</title>
     <base href="/" />
+    <script>
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved ?? (prefersDark ? 'nomiadark' : 'nomialight');
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.classList.toggle('dark', theme === 'nomiadark');
+    </script>
 
     <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
