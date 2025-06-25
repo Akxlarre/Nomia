@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Inject, DOCUMENT } from '@angular/core';
+import { Component, Inject, DOCUMENT } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PrimaryButtonComponent } from '../../shared/components';
 
@@ -13,8 +13,6 @@ import { PrimaryButtonComponent } from '../../shared/components';
       [class.bg-hero-dark]="isDark"
       [class.text-base-content]="!isDark"
       [class.text-base-content]="isDark"
-      [class.opacity-0]="!loaded"
-      [class.translate-y-4]="!loaded"
     >
       <div class="relative z-10 max-w-2xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-serif mb-4 text-base-content">
@@ -26,8 +24,6 @@ import { PrimaryButtonComponent } from '../../shared/components';
         <a
           routerLink="/test"
           class="btn btn-primary shadow-md transition-all duration-700 ease-out"
-          [class.opacity-0]="!loaded"
-          [class.translate-y-4]="!loaded"
         >
           <span class="mr-1">✨</span> Comenzar el Test
         </a>
@@ -44,8 +40,7 @@ import { PrimaryButtonComponent } from '../../shared/components';
     </section>
   `,
 })
-export class HeroSectionComponent implements AfterViewInit {
-  loaded = false;
+export class HeroSectionComponent {
 
   /** Declaramos explícitamente la propiedad */
   isDark = false;
@@ -55,12 +50,4 @@ export class HeroSectionComponent implements AfterViewInit {
     this.isDark = this.document.documentElement.classList.contains('dark');
   }
 
-  ngAfterViewInit() {
-    // Tras el render inicial, lanzamos la animación
-    setTimeout(() => {
-      this.loaded = true;
-      // Por si el usuario cambió el theme justo al cargar
-      this.isDark = this.document.documentElement.classList.contains('dark');
-    }, 10);
-  }
 }
