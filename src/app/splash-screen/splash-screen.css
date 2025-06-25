@@ -9,7 +9,7 @@
 
 @keyframes circleGrow {
   from {
-    transform: scale(0);
+    transform: scale(0.1);
   }
   to {
     transform: scale(1);
@@ -55,6 +55,17 @@
   overflow: hidden;
   white-space: nowrap;
   width: 0;
-  animation: typing 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  visibility: hidden; /* Oculta el texto inicialmente */
+  animation: typing 3.5s cubic-bezier(0, 0, 0.2, 1) forwards;
   animation-delay: 2.1s;
+}
+
+@keyframes typing {
+  from {
+    visibility: visible; /* Hace visible el texto al iniciar la animación */
+    width: 0;
+  }
+  to {
+    width: 27ch;
+  }
 }

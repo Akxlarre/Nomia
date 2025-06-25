@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import lottie from 'lottie-web';
 
 @Component({
@@ -10,15 +10,19 @@ import lottie from 'lottie-web';
 })
 export class SplashScreenComponent implements AfterViewInit {
   @ViewChild('spinner', { static: true }) spinner!: ElementRef<HTMLDivElement>;
+
   logoSrc = '/assets/img/Logo-ligth.webp';
   dataTheme = 'nomialight';
+  private spinnerPath = '/assets/img/spinnerClaro.json';
 
   constructor() {
     const stored = localStorage.getItem('theme');
     const isDark = stored === 'nomiadark';
+
     if (isDark) {
       this.logoSrc = '/assets/img/logo-dark.webp';
       this.dataTheme = 'nomiadark';
+      this.spinnerPath = '/assets/img/spinner.json';
     }
   }
 
@@ -28,7 +32,7 @@ export class SplashScreenComponent implements AfterViewInit {
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      path: '/assets/img/spinner.json',
+      path: this.spinnerPath,
     });
   }
 }
