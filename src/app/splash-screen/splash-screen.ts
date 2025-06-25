@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import lottie from 'lottie-web';
 
 @Component({
   selector: 'app-splash-screen',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./splash-screen.css'],
   imports: [],
 })
-export class SplashScreenComponent {
+export class SplashScreenComponent implements AfterViewInit {
+  @ViewChild('spinner', { static: true }) spinner!: ElementRef<HTMLDivElement>;
   logoSrc = '/assets/img/Logo-ligth.webp';
   dataTheme = 'nomialight';
 
@@ -18,5 +20,15 @@ export class SplashScreenComponent {
       this.logoSrc = '/assets/img/logo-dark.webp';
       this.dataTheme = 'nomiadark';
     }
+  }
+
+  ngAfterViewInit(): void {
+    lottie.loadAnimation({
+      container: this.spinner.nativeElement,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: '/assets/img/spinner.json',
+    });
   }
 }
