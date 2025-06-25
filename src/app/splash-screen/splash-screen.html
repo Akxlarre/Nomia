@@ -2,13 +2,23 @@
   class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-base-100 text-base-content"
   [attr.data-theme]="dataTheme"
 >
-  <div class="bg-accent/10 rounded-full w-64 h-64 flex items-center justify-center">
-    <img [src]="logoSrc" alt="Logo Nomia" class="w-32 md:w-40 lg:w-48" />
+  <!-- Círculo relativo para posicionamiento interno -->
+  <div class="bg-accent/10 rounded-full w-64 h-64 flex items-center justify-center relative">
+    <!-- Logo centrado -->
+    <img
+      [src]="logoSrc"
+      alt="Logo Nomia"
+      class="w-32 md:w-40 lg:w-48"
+    />
+
+    <!-- Spinner absoluto: no afecta al flex centering -->
+    <div
+      #spinner
+      class="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-10 h-10"
+    ></div>
   </div>
 
-  <p class="mt-4 text-xl md:text-2xl font-light italic text-center max-w-xs px-4">
+  <p class="mt-6 text-xl md:text-2xl font-light italic text-center max-w-xs px-4">
     El alma ya conoce su nombre
   </p>
-
-  <div #spinner class="mt-6 w-10 h-10"></div>
 </div>
