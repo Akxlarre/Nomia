@@ -1,17 +1,89 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import {
+  TestHeaderComponent,
+  TestProgressComponent,
+  QuestionViewerComponent,
+  NavigationButtonsComponent,
+  AnimatedBackgroundComponent,
+} from '../components';
+import { QuizService } from '../services/quiz.service';
+import { NgIf } from '@angular/common';
+import { Question } from '../components/question-viewer.component';
 
 @Component({
   standalone: true,
   selector: 'app-test-page',
+  imports: [
+    NgIf,
+    TestHeaderComponent,
+    TestProgressComponent,
+    QuestionViewerComponent,
+    NavigationButtonsComponent,
+    AnimatedBackgroundComponent,
+  ],
   template: `
-    <section class="py-16 px-4 text-center">
-      <h2 class="text-3xl font-serif mb-4">Test Emocional</h2>
-      <p class="text-base font-sans mb-6">Conecta con las energías que vibran contigo.</p>
-      <!-- Aquí irá el componente del test -->
-      <div class="border border-dashed border-base-300 p-6 rounded-lg">
-        <p class="text-sm text-base-content opacity-60">[Componente de preguntas irá aquí]</p>
+    <app-animated-background />
+    <section class="relative py-16 px-4 mx-auto max-w-xl animate-fade-in-up">
+      <app-test-header />
+      <app-test-progress [current]="current + 1" [total]="questions.length" />
+      <app-question-viewer
+        [question]="questions[current]"
+        [selectedOption]="answers[questions[current].id]"
+        (choose)="onChoose($event)"
+      />
+      <ng-container *ngIf="!finished">
+        <app-navigation-buttons
+          [canPrev]="current > 0"
+          [canNext]="!!answers[questions[current].id]"
+          [isLast]="current === questions.length - 1"
+          (prev)="prev()"
+          (next)="next()"
+        />
+      </ng-container>
+      <div *ngIf="finished" class="text-center mt-8">
+        <p class="text-xl font-serif mb-4">Tu alma ya eligió. Estamos preparando tu carta…</p>
+        <span class="loading loading-spinner loading-lg text-accent"></span>
       </div>
     </section>
   `,
 })
-export class TestPage {}
+export class TestPage {
+  questions: Question[] = [];
+  answers: Record<string, string> = {};
+  current = 0;
+  finished = false;
+
+  constructor(private quiz: QuizService, private router: Router) {
+    this.questions = this.quiz.questions;
+  }
+
+  onChoose(optionId: string) {
+    this.answers[this.questions[this.current].id] = optionId;
+  }
+
+  prev() {
+    if (this.current > 0) {
+      this.current--;
+    }
+  }
+
+  next() {
+    if (!this.answers[this.questions[this.current].id]) {
+      return;
+    }
+    if (this.current < this.questions.length - 1) {
+      this.current++;
+    } else {
+      this.finish();
+    }
+  }
+
+  private finish() {
+    this.finished = true;
+    this.quiz.submitAnswers(this.answers);
+    setTimeout(() => {
+      this.router.navigateByUrl('/result');
+    }, 2000);
+  }
+}
