@@ -8,14 +8,12 @@ import {
   AnimatedBackgroundComponent,
 } from '../components';
 import { QuizService } from '../services/quiz.service';
-import { NgIf } from '@angular/common';
 import { Question } from '../components/question-viewer.component';
 
 @Component({
   standalone: true,
   selector: 'app-test-page',
   imports: [
-    NgIf,
     TestHeaderComponent,
     TestProgressComponent,
     QuestionViewerComponent,
@@ -29,37 +27,42 @@ import { Question } from '../components/question-viewer.component';
       <app-test-progress [current]="current + 1" [total]="questions.length" />
       <app-question-viewer
         [question]="questions[current]"
-        [selectedOption]="answers[questions[current].id]"
+        [selected]="answers[questions[current].id]"
         (choose)="onChoose($event)"
       />
-      <ng-container *ngIf="!finished">
+      @if (!finished) {
         <app-navigation-buttons
           [canPrev]="current > 0"
-          [canNext]="!!answers[questions[current].id]"
+          [canNext]="isAnswered(questions[current])"
           [isLast]="current === questions.length - 1"
           (prev)="prev()"
           (next)="next()"
         />
-      </ng-container>
-      <div *ngIf="finished" class="text-center mt-8">
-        <p class="text-xl font-serif mb-4">Tu alma ya eligió. Estamos preparando tu carta…</p>
-        <span class="loading loading-spinner loading-lg text-accent"></span>
-      </div>
+      }
+      @if (finished) {
+        <div class="text-center mt-8">
+          <p class="text-xl font-serif mb-4">Tu alma ya eligió. Estamos preparando tu carta…</p>
+          <span class="loading loading-spinner loading-lg text-accent"></span>
+        </div>
+      }
     </section>
   `,
 })
 export class TestPage {
   questions: Question[] = [];
-  answers: Record<string, string> = {};
+  answers: Record<string, any> = {};
   current = 0;
   finished = false;
 
-  constructor(private quiz: QuizService, private router: Router) {
+  constructor(
+    private quiz: QuizService,
+    private router: Router
+  ) {
     this.questions = this.quiz.questions;
   }
 
-  onChoose(optionId: string) {
-    this.answers[this.questions[this.current].id] = optionId;
+  onChoose(value: any) {
+    this.answers[this.questions[this.current].id] = value;
   }
 
   prev() {
@@ -69,7 +72,7 @@ export class TestPage {
   }
 
   next() {
-    if (!this.answers[this.questions[this.current].id]) {
+    if (!this.isAnswered(this.questions[this.current])) {
       return;
     }
     if (this.current < this.questions.length - 1) {
@@ -77,6 +80,17 @@ export class TestPage {
     } else {
       this.finish();
     }
+  }
+
+  isAnswered(q: Question): boolean {
+    const val = this.answers[q.id];
+    if (q.type === 'multi') {
+      return Array.isArray(val) && val.length > 0;
+    }
+    if (q.type === 'style') {
+      return !!val && val.longitud;
+    }
+    return !!val;
   }
 
   private finish() {

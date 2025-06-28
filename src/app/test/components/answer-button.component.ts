@@ -13,7 +13,9 @@ import { NgClass } from '@angular/common';
       }"
       (click)="choose.emit(optionId)"
     >
-      <span *ngIf="icon" aria-hidden="true">{{ icon }}</span>
+      @if (icon) {
+        <span aria-hidden="true">{{ icon }}</span>
+      }
       <span class="flex-1 text-left">{{ label }}</span>
     </button>
   `,

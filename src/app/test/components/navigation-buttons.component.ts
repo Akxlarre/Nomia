@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgIf } from '@angular/common';
 import { PrimaryButtonComponent, GhostButtonComponent } from '../../shared/components';
 
 @Component({
   standalone: true,
   selector: 'app-navigation-buttons',
-  imports: [NgIf, PrimaryButtonComponent, GhostButtonComponent],
+  imports: [PrimaryButtonComponent, GhostButtonComponent],
   template: `
     <div class="flex justify-between mt-6">
       <ui-ghost-button type="button" (click)="prev.emit()" [disabled]="!canPrev">
