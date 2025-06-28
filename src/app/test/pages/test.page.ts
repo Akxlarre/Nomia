@@ -29,13 +29,13 @@ import { Question } from '../components/question-viewer.component';
       <app-test-progress [current]="current + 1" [total]="questions.length" />
       <app-question-viewer
         [question]="questions[current]"
-        [selectedOption]="answers[questions[current].id]"
+        [selected]="answers[questions[current].id]"
         (choose)="onChoose($event)"
       />
       <ng-container *ngIf="!finished">
         <app-navigation-buttons
           [canPrev]="current > 0"
-          [canNext]="!!answers[questions[current].id]"
+          [canNext]="isAnswered(questions[current])"
           [isLast]="current === questions.length - 1"
           (prev)="prev()"
           (next)="next()"
@@ -50,7 +50,7 @@ import { Question } from '../components/question-viewer.component';
 })
 export class TestPage {
   questions: Question[] = [];
-  answers: Record<string, string> = {};
+  answers: Record<string, any> = {};
   current = 0;
   finished = false;
 
@@ -58,8 +58,8 @@ export class TestPage {
     this.questions = this.quiz.questions;
   }
 
-  onChoose(optionId: string) {
-    this.answers[this.questions[this.current].id] = optionId;
+  onChoose(value: any) {
+    this.answers[this.questions[this.current].id] = value;
   }
 
   prev() {
@@ -69,7 +69,7 @@ export class TestPage {
   }
 
   next() {
-    if (!this.answers[this.questions[this.current].id]) {
+    if (!this.isAnswered(this.questions[this.current])) {
       return;
     }
     if (this.current < this.questions.length - 1) {
@@ -77,6 +77,17 @@ export class TestPage {
     } else {
       this.finish();
     }
+  }
+
+  isAnswered(q: Question): boolean {
+    const val = this.answers[q.id];
+    if (q.type === 'multi') {
+      return Array.isArray(val) && val.length > 0;
+    }
+    if (q.type === 'style') {
+      return !!val && val.longitud;
+    }
+    return !!val;
   }
 
   private finish() {
