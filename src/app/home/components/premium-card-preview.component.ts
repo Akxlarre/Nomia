@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NatalCardComponent, SecondaryButtonComponent } from '../../shared/components';
+import { NatalCardComponent } from '../../shared/components';
 
 @Component({
   standalone: true,
   selector: 'app-premium-card-preview',
-  imports: [RouterModule, NatalCardComponent, SecondaryButtonComponent],
+  imports: [RouterModule, NatalCardComponent],
   template: `
     <section class="relative py-16 px-6 text-center">
       <div class="absolute -top-10 right-10 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
