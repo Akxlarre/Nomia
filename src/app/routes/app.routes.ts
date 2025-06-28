@@ -16,7 +16,7 @@ export const appRoutes: Routes = [
       },
       {
         path: 'result',
-        loadComponent: () => import('../result/pages/result.page').then(m => m.ResultPage),
+        loadComponent: () => import('../result/pages/result.page').then(m => m.ResultPageComponent),
       },
       {
         path: 'pay',
