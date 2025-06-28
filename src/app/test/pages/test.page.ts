@@ -22,11 +22,21 @@ import {
   animations: [
     trigger('questionFade', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }),
-        animate('400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+        style({
+          opacity: 0,
+          transform: 'translateY(2rem) scale(0.96)',
+          filter: 'blur(1px)',
+        }),
+        animate(
+          '600ms cubic-bezier(.16,1,.3,1)',
+          style({ opacity: 1, transform: 'translateY(0) scale(1)', filter: 'blur(0)' })
+        ),
       ]),
       transition(':leave', [
-        animate('300ms ease-in', style({ opacity: 0, transform: 'translateY(-12px)' })),
+        animate(
+          '400ms cubic-bezier(.4,0,.2,1)',
+          style({ opacity: 0, transform: 'translateY(-12px)', filter: 'blur(0.5px)' })
+        ),
       ]),
     ]),
   ],
