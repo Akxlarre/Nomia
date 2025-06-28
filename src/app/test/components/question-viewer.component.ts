@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AnswerButtonComponent } from './answer-button.component';
 
 export interface QuestionOption {
@@ -25,15 +25,20 @@ export interface Question {
   selector: 'app-question-viewer',
   imports: [AnswerButtonComponent],
   template: `
-    <div class="mb-6">
-      <h3 class="text-2xl font-serif mb-2">{{ question?.title }}</h3>
+    <div class="mb-10">
+      <h3 class="text-2xl font-serif mb-2 leading-snug tracking-tight">
+        {{ question?.title }}
+      </h3>
       @if (question?.description) {
-        <p class="text-base mb-4 opacity-80">{{ question?.description }}</p>
+        <p class="text-base font-sans mb-6 opacity-80 max-w-prose leading-relaxed">
+          {{ question?.description }}
+        </p>
       }
+
       @switch (question?.type) {
         @case ('single') {
-          <div class="space-y-3">
-            @for (opt of question?.options; track opt.id) {
+          <div class="grid gap-4">
+            @for (opt of (question?.options ?? []); track opt.id) {
               <app-answer-button
                 [label]="opt.label"
                 [optionId]="opt.id"
@@ -44,9 +49,13 @@ export interface Question {
             }
           </div>
         }
+
         @case ('multi') {
-          <div class="space-y-3">
-            @for (opt of question?.options; track opt.id) {
+          <div class="space-y-2 mb-4 text-sm text-base-content/70 font-medium italic">
+            Puedes elegir hasta {{ question?.maxSelection }} opciones
+          </div>
+          <div class="grid gap-4">
+            @for (opt of (question?.options ?? []); track opt.id) {
               <app-answer-button
                 [label]="opt.label"
                 [optionId]="opt.id"
@@ -58,58 +67,111 @@ export interface Question {
           </div>
         }
         @case ('style') {
-          <div class="space-y-4">
+          <div class="space-y-8">
+
+            <!-- Longitud -->
             <div>
-              <label class="block mb-1 font-medium">Longitud</label>
-              <select
-                class="select select-bordered w-full"
-                [value]="styleValue.longitud"
-                (change)="updateStyle('longitud', $any($event.target).value)"
-              >
-                <option value="corto">corto</option>
-                <option value="largo">largo</option>
-              </select>
+              <h4 class="mb-3 font-semibold text-lg">¿Qué longitud prefieres?</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <app-answer-button
+                  label="Corto"
+                  icon="🌿"
+                  [optionId]="'corto'"
+                  [selected]="styleValue.longitud === 'corto'"
+                  (choose)="updateStyle('longitud', 'corto')"
+                />
+                <app-answer-button
+                  label="Largo"
+                  icon="🌙"
+                  [optionId]="'largo'"
+                  [selected]="styleValue.longitud === 'largo'"
+                  (choose)="updateStyle('longitud', 'largo')"
+                />
+              </div>
             </div>
+
+            <!-- Vocal fuerte -->
             <div>
-              <label class="block mb-1 font-medium">Vocal fuerte</label>
-              <select
-                class="select select-bordered w-full"
-                [value]="styleValue.vocal_fuerte"
-                (change)="updateStyle('vocal_fuerte', $any($event.target).value)"
-              >
-                <option value="true">sí</option>
-                <option value="false">no</option>
-              </select>
+              <h4 class="mb-3 font-semibold text-lg">¿Te gusta una vocal fuerte?</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <app-answer-button
+                  label="Sí"
+                  icon="🔊"
+                  [optionId]="'true'"
+                  [selected]="styleValue.vocal_fuerte === true"
+                  (choose)="updateStyle('vocal_fuerte', 'true')"
+                />
+                <app-answer-button
+                  label="No"
+                  icon="🤫"
+                  [optionId]="'false'"
+                  [selected]="styleValue.vocal_fuerte === false"
+                  (choose)="updateStyle('vocal_fuerte', 'false')"
+                />
+              </div>
             </div>
+
+            <!-- Terminación -->
             <div>
-              <label class="block mb-1 font-medium">Terminación</label>
-              <select
-                class="select select-bordered w-full"
-                [value]="styleValue.terminacion"
-                (change)="updateStyle('terminacion', $any($event.target).value)"
-              >
-                <option value="a">a</option>
-                <option value="o">o</option>
-                <option value="otra">otra</option>
-              </select>
+              <h4 class="mb-3 font-semibold text-lg">¿Con qué letra te gustaría que terminara?</h4>
+              <div class="grid grid-cols-3 gap-4">
+                <app-answer-button
+                  label="A"
+                  icon="🌸"
+                  [optionId]="'a'"
+                  [selected]="styleValue.terminacion === 'a'"
+                  (choose)="updateStyle('terminacion', 'a')"
+                />
+                <app-answer-button
+                  label="O"
+                  icon="🧿"
+                  [optionId]="'o'"
+                  [selected]="styleValue.terminacion === 'o'"
+                  (choose)="updateStyle('terminacion', 'o')"
+                />
+                <app-answer-button
+                  label="Otra"
+                  icon="✨"
+                  [optionId]="'otra'"
+                  [selected]="styleValue.terminacion === 'otra'"
+                  (choose)="updateStyle('terminacion', 'otra')"
+                />
+              </div>
             </div>
+
+            <!-- Sílabas -->
             <div>
-              <label class="block mb-1 font-medium">Sílabas</label>
-              <select
-                class="select select-bordered w-full"
-                [value]="styleValue.silabas"
-                (change)="updateStyle('silabas', $any($event.target).value)"
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
+              <h4 class="mb-3 font-semibold text-lg">¿Número de sílabas ideal?</h4>
+              <div class="grid grid-cols-3 gap-4">
+                <app-answer-button
+                  label="1 sílaba"
+                  icon="1️⃣"
+                  [optionId]="'1'"
+                  [selected]="styleValue.silabas === 1"
+                  (choose)="updateStyle('silabas', '1')"
+                />
+                <app-answer-button
+                  label="2 sílabas"
+                  icon="2️⃣"
+                  [optionId]="'2'"
+                  [selected]="styleValue.silabas === 2"
+                  (choose)="updateStyle('silabas', '2')"
+                />
+                <app-answer-button
+                  label="3 sílabas"
+                  icon="3️⃣"
+                  [optionId]="'3'"
+                  [selected]="styleValue.silabas === 3"
+                  (choose)="updateStyle('silabas', '3')"
+                />
+              </div>
             </div>
+
           </div>
         }
         @case ('combined') {
-          <div class="space-y-3">
-            @for (opt of question?.options; track opt.id) {
+          <div class="grid gap-4">
+            @for (opt of (question?.options ?? []); track opt.id) {
               <app-answer-button
                 [label]="opt.label"
                 [optionId]="opt.id"
@@ -130,11 +192,11 @@ export class QuestionViewerComponent {
   @Output() choose = new EventEmitter<any>();
 
   styleValue = {
-    longitud: 'corto',
-    vocal_fuerte: false,
-    terminacion: 'a',
-    silabas: 1,
-  };
+    longitud: undefined,
+    vocal_fuerte: undefined,
+    terminacion: undefined,
+    silabas: undefined,
+  } as any;
 
   ngOnChanges() {
     if (this.question?.type === 'style' && this.selected) {
@@ -143,7 +205,7 @@ export class QuestionViewerComponent {
   }
 
   toggleMulti(id: string) {
-    const arr: string[] = Array.isArray(this.selected) ? [...this.selected] : [];
+    const arr = Array.isArray(this.selected) ? [...this.selected] : [];
     const idx = arr.indexOf(id);
     if (idx >= 0) {
       arr.splice(idx, 1);

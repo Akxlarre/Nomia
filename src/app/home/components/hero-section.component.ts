@@ -1,10 +1,11 @@
 import { Component, Inject, DOCUMENT } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { PrimaryButtonComponent } from '../../shared/components';
 
 @Component({
   standalone: true,
   selector: 'app-hero-section',
-  imports: [RouterModule],
+  imports: [RouterModule, PrimaryButtonComponent],
   template: `
     <section
       class="relative overflow-hidden text-center px-6 py-24 transition-all duration-700"
@@ -20,11 +21,10 @@ import { RouterModule } from '@angular/router';
         <p class="text-base md:text-lg mb-8 italic text-base-content/90">
           El alma ya eligió. Solo debes descubrirlo.
         </p>
-        <a
-          routerLink="/test"
-          class="btn btn-primary shadow-md transition-all duration-700 ease-out"
-        >
-         Comenzar el Test
+        <a routerLink="/test">
+          <ui-primary-button>
+            Comenzar el Test
+          </ui-primary-button>
         </a>
       </div>
 
@@ -40,13 +40,9 @@ import { RouterModule } from '@angular/router';
   `,
 })
 export class HeroSectionComponent {
-
-  /** Declaramos explícitamente la propiedad */
   isDark = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    // Leemos el modo actual de la etiqueta <html>
     this.isDark = this.document.documentElement.classList.contains('dark');
   }
-
 }

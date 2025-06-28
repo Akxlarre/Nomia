@@ -6,12 +6,24 @@ import { PrimaryButtonComponent, GhostButtonComponent } from '../../shared/compo
   selector: 'app-navigation-buttons',
   imports: [PrimaryButtonComponent, GhostButtonComponent],
   template: `
-    <div class="flex justify-between mt-6">
-      <ui-ghost-button type="button" (click)="prev.emit()" [disabled]="!canPrev">
-        Anterior
+    <div
+      class="flex flex-wrap items-center justify-between gap-4 mt-10 pt-6 border-t border-base-200"
+      role="navigation"
+    >
+      <ui-ghost-button
+        type="button"
+        [disabled]="!canPrev"
+        (click)="prev.emit()"
+      >
+        ← Anterior
       </ui-ghost-button>
-      <ui-primary-button type="button" (click)="next.emit()" [disabled]="!canNext">
-        {{ isLast ? 'Finalizar' : 'Siguiente' }}
+
+      <ui-primary-button
+        type="button"
+        [disabled]="!canNext"
+        (click)="next.emit()"
+      >
+        {{ isLast ? '✨ Finalizar' : 'Siguiente →' }}
       </ui-primary-button>
     </div>
   `,

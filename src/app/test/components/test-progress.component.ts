@@ -6,10 +6,11 @@ import { ProgressBarComponent } from '../../shared/components';
   selector: 'app-test-progress',
   imports: [ProgressBarComponent],
   template: `
-    <div class="mb-4">
-      <ui-progress-bar [value]="percent" [max]="100" />
-      <p class="text-sm mt-2 text-center font-sans opacity-80">
-        Paso {{ current }} de {{ total }}
+    <div class="mb-10 animate-fade-in-up">
+      <ui-progress-bar [value]="percent" [max]="100"/>
+
+      <p class="text-sm md:text-base mt-3 text-center font-sans text-base-content/80 italic tracking-wide">
+        Avanzando: paso {{ current }} de {{ total }}
       </p>
     </div>
   `,
