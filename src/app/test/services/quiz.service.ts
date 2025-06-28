@@ -1,233 +1,134 @@
 import { Injectable } from '@angular/core';
 import { Question } from '../components/question-viewer.component';
+import { QuizProfile } from '../../shared/models/quiz-profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class QuizService {
   questions: Question[] = [
     {
-      id: 'elemento',
-      title: '¿Qué elemento resuena más contigo?',
+      id: 'energia_simbolica',
+      title: '¿Qué tipo de energía sientes que rodea a este nuevo ser?',
+      type: 'multi',
+      maxSelection: 2,
       options: [
-        {
-          id: 'fuego', label: 'Fuego', icon: '🔥',
-          value: 1
-        },
-        {
-          id: 'agua', label: 'Agua', icon: '💧',
-          value: 2
-        },
-        {
-          id: 'aire', label: 'Aire', icon: '🌬️',
-          value: 3
-        },
-        {
-          id: 'tierra', label: 'Tierra', icon: '🌱',
-          value: 4
-        },
+        { id: 'luz', label: 'Luz', icon: '🌟' },
+        { id: 'magia', label: 'Magia', icon: '✨' },
+        { id: 'dulzura', label: 'Dulzura', icon: '🍯' },
+        { id: 'proteccion', label: 'Protección', icon: '🛡️' },
+        { id: 'sabiduria', label: 'Sabiduría', icon: '🧠' },
+        { id: 'fuego', label: 'Fuego', icon: '🔥' },
+        { id: 'rebeldia', label: 'Rebeldía', icon: '⚡' },
+        { id: 'calma', label: 'Calma', icon: '🕊️' },
+        { id: 'transformacion', label: 'Transformación', icon: '🌀' },
+        { id: 'espiritualidad', label: 'Espiritualidad', icon: '🌙' },
       ],
     },
     {
-      id: 'momento_dia',
-      title: 'Elige el momento del día que prefieres',
+      id: 'personalidad_proyectada',
+      title: '¿Qué cualidades deseas que este ser refleje?',
+      type: 'multi',
+      maxSelection: 3,
       options: [
-        {
-          id: 'amanecer', label: 'Amanecer', icon: '🌅',
-          value: 1
-        },
-        {
-          id: 'mediodia', label: 'Mediodía', icon: '🌞',
-          value: 2
-        },
-        {
-          id: 'atardecer', label: 'Atardecer', icon: '🌇',
-          value: 3
-        },
-        {
-          id: 'noche', label: 'Noche', icon: '🌙',
-          value: 4
-        },
+        { id: 'creativo', label: 'Creativo', icon: '🎨' },
+        { id: 'protector', label: 'Protector', icon: '🐻' },
+        { id: 'alegre', label: 'Alegre', icon: '😊' },
+        { id: 'sabio', label: 'Sabio', icon: '🦉' },
+        { id: 'libre', label: 'Libre', icon: '🌬️' },
+        { id: 'valiente', label: 'Valiente', icon: '🗡️' },
+        { id: 'misterioso', label: 'Misterioso', icon: '🌑' },
+        { id: 'compasivo', label: 'Compasivo', icon: '💞' },
+        { id: 'profundo', label: 'Profundo', icon: '🌊' },
       ],
     },
     {
-      id: 'flor',
-      title: '¿Qué flor te inspira más?',
+      id: 'estilo_sonoro',
+      title: '¿Cómo te gustaría que suene su nombre?',
+      type: 'style',
+    },
+    {
+      id: 'origen_simbolico',
+      title: '¿Qué raíces culturales te inspiran?',
+      type: 'multi',
+      maxSelection: 2,
       options: [
-        {
-          id: 'rosa', label: 'Rosa', icon: '🌹',
-          value: 1
-        },
-        {
-          id: 'lirio', label: 'Lirio', icon: '🌺',
-          value: 2
-        },
-        {
-          id: 'jazmin', label: 'Jazmín', icon: '🌼',
-          value: 3
-        },
-        {
-          id: 'loto', label: 'Loto', icon: '🪷',
-          value: 4
-        },
+        { id: 'andino', label: 'Andino', icon: '🏔️' },
+        { id: 'celta', label: 'Celta', icon: '🌀' },
+        { id: 'hebreo', label: 'Hebreo', icon: '✡️' },
+        { id: 'arabe', label: 'Árabe', icon: '🕌' },
+        { id: 'indigena', label: 'Indígena', icon: '🪶' },
+        { id: 'latino', label: 'Latino clásico', icon: '🏛️' },
+        { id: 'vasco', label: 'Vasco', icon: '🗻' },
+        { id: 'africano', label: 'Africano simbólico', icon: '🌍' },
+        { id: 'mapuche', label: 'Mapuche', icon: '🐾' },
+        { id: 'griego', label: 'Griego', icon: '🏺' },
       ],
     },
     {
-      id: 'sonido',
-      title: 'Escoge un sonido que armonice tu espíritu',
+      id: 'valores_deseados',
+      title: '¿Qué valores deseas transmitir a través del nombre?',
+      type: 'multi',
+      maxSelection: 3,
       options: [
-        {
-          id: 'olas', label: 'Olas del mar', icon: '🌊',
-          value: 1
-        },
-        {
-          id: 'lluvia', label: 'Lluvia suave', icon: '🌧️',
-          value: 2
-        },
-        {
-          id: 'viento', label: 'Viento entre árboles', icon: '🍃',
-          value: 3
-        },
-        {
-          id: 'campanas', label: 'Campanas tibetanas', icon: '🔔',
-          value: 4
-        },
+        { id: 'libertad', label: 'Libertad', icon: '🕊️' },
+        { id: 'conexion', label: 'Conexión', icon: '🔗' },
+        { id: 'resiliencia', label: 'Resiliencia', icon: '🌱' },
+        { id: 'renacimiento', label: 'Renacimiento', icon: '🔄' },
+        { id: 'sabiduria_valor', label: 'Sabiduría', icon: '📚' },
+        { id: 'sensibilidad', label: 'Sensibilidad', icon: '💧' },
+        { id: 'belleza', label: 'Belleza', icon: '🌸' },
+        { id: 'autenticidad', label: 'Autenticidad', icon: '🔥' },
       ],
     },
     {
-      id: 'cristal',
-      title: '¿Qué cristal llevarías contigo?',
+      id: 'genero_preferido',
+      title: '¿Tienes alguna preferencia de género?',
+      type: 'single',
       options: [
-        {
-          id: 'cuarzo', label: 'Cuarzo', icon: '💎',
-          value: 1
-        },
-        {
-          id: 'amatista', label: 'Amatista', icon: '🔮',
-          value: 2
-        },
-        {
-          id: 'obsidiana', label: 'Obsidiana', icon: '⚫',
-          value: 3
-        },
-        {
-          id: 'jade', label: 'Jade', icon: '🟢',
-          value: 4
-        },
+        { id: 'femenino', label: 'Femenino', icon: '🚺' },
+        { id: 'masculino', label: 'Masculino', icon: '🚹' },
+        { id: 'neutro', label: 'Neutro', icon: '⚧️' },
+        { id: 'sin_preferencia', label: 'Sin preferencia', icon: '❔' },
       ],
     },
     {
-      id: 'animal_guia',
-      title: 'Elige un animal guía',
+      id: 'inspiracion',
+      title: '¿Qué tipo de historia o energía quieres que inspire el nombre?',
+      type: 'combined',
       options: [
-        {
-          id: 'lobo', label: 'Lobo', icon: '🐺',
-          value: 1
-        },
-        {
-          id: 'gato', label: 'Gato', icon: '🐱',
-          value: 2
-        },
-        {
-          id: 'mariposa', label: 'Mariposa', icon: '🦋',
-          value: 3
-        },
-        {
-          id: 'lechuza', label: 'Lechuza', icon: '🦉',
-          value: 4
-        },
-      ],
-    },
-    {
-      id: 'aroma',
-      title: '¿Qué aroma calma tu mente?',
-      options: [
-        {
-          id: 'lavanda', label: 'Lavanda', icon: '💜',
-          value: 1
-        },
-        {
-          id: 'sandalwood', label: 'Sándalo', icon: '🪵',
-          value: 2
-        },
-        {
-          id: 'jazmin_aroma', label: 'Jazmín', icon: '🌸',
-          value: 3
-        },
-        {
-          id: 'cedro', label: 'Cedro', icon: '🌲',
-          value: 4
-        },
-      ],
-    },
-    {
-      id: 'camino',
-      title: 'Elige un camino para recorrer',
-      options: [
-        {
-          id: 'bosque', label: 'Bosque', icon: '🌳',
-          value: 1
-        },
-        {
-          id: 'montana', label: 'Montaña', icon: '⛰️',
-          value: 2
-        },
-        {
-          id: 'playa', label: 'Playa', icon: '🏖️',
-          value: 3
-        },
-        {
-          id: 'desierto', label: 'Desierto', icon: '🏜️',
-          value: 4
-        },
-      ],
-    },
-    {
-      id: 'estacion',
-      title: '¿Cuál estación del año prefieres?',
-      options: [
-        {
-          id: 'primavera', label: 'Primavera', icon: '🌷',
-          value: 1
-        },
-        {
-          id: 'verano', label: 'Verano', icon: '☀️',
-          value: 2
-        },
-        {
-          id: 'otono', label: 'Otoño', icon: '🍂',
-          value: 3
-        },
-        {
-          id: 'invierno', label: 'Invierno', icon: '❄️',
-          value: 4
-        },
-      ],
-    },
-    {
-      id: 'color',
-      title: 'Escoge el color que más conecte contigo',
-      options: [
-        {
-          id: 'rojo', label: 'Rojo', icon: '❤️',
-          value: 1
-        },
-        {
-          id: 'azul', label: 'Azul', icon: '💙',
-          value: 2
-        },
-        {
-          id: 'verde', label: 'Verde', icon: '💚',
-          value: 3
-        },
-        {
-          id: 'violeta', label: 'Violeta', icon: '💜',
-          value: 4
-        },
+        { id: 'mistico_antiguo', label: 'Antigua y mística', icon: '🧙‍♀️', tonePoetico: 'mistico', epocaInspiradora: 'antigua' },
+        { id: 'espiritual_naturaleza', label: 'Alma y naturaleza', icon: '🌿', tonePoetico: 'espiritual', epocaInspiradora: 'naturaleza' },
+        { id: 'moderno_futuro', label: 'Futura y visionaria', icon: '🔮', tonePoetico: 'moderno', epocaInspiradora: 'futuro' },
+        { id: 'atemporal_simple', label: 'Simple y eterno', icon: '⏳', tonePoetico: 'atemporal', epocaInspiradora: 'sin_tiempo_definido' },
       ],
     },
   ];
 
-  submitAnswers(answers: Record<string, string>) {
-    // Se podría enviar al backend. Aquí solo registramos en consola.
-    console.log('Enviando quizProfile', answers);
+  submitAnswers(answers: Record<string, any>) {
+    const profile: QuizProfile = {
+      energia_simbolica: answers['energia_simbolica'] || [],
+      personalidad_proyectada: answers['personalidad_proyectada'] || [],
+      estilo_sonoro: answers['estilo_sonoro'] || {
+        longitud: 'corto',
+        vocal_fuerte: false,
+        terminacion: 'a',
+        silabas: 1,
+      },
+      origen_simbolico: answers['origen_simbolico'] || [],
+      valores_deseados: answers['valores_deseados'] || [],
+      genero_preferido: answers['genero_preferido'] || 'sin_preferencia',
+      tono_poetico: '',
+      epoca_inspiradora: '',
+    };
+
+    const insp = answers['inspiracion'];
+    const opt = this.questions
+      .find(q => q.id === 'inspiracion')?.options
+      ?.find(o => o.id === insp);
+    if (opt) {
+      profile.tono_poetico = opt.tonePoetico || '';
+      profile.epoca_inspiradora = opt.epocaInspiradora || '';
+    }
+
+    console.log('Enviando quizProfile', profile);
   }
 }

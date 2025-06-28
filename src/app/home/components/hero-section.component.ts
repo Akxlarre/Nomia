@@ -1,11 +1,10 @@
 import { Component, Inject, DOCUMENT } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PrimaryButtonComponent } from '../../shared/components';
 
 @Component({
   standalone: true,
   selector: 'app-hero-section',
-  imports: [RouterModule, PrimaryButtonComponent],
+  imports: [RouterModule],
   template: `
     <section
       class="relative overflow-hidden text-center px-6 py-24 transition-all duration-700"
