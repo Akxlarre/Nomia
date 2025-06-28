@@ -5,103 +5,223 @@ import { Question } from '../components/question-viewer.component';
 export class QuizService {
   questions: Question[] = [
     {
-      id: 'q1',
+      id: 'elemento',
       title: '¿Qué elemento resuena más contigo?',
       options: [
-        { id: 'fuego', label: 'Fuego', value: 1, icon: '🔥' },
-        { id: 'agua', label: 'Agua', value: 2, icon: '💧' },
-        { id: 'aire', label: 'Aire', value: 3, icon: '🌬️' },
-        { id: 'tierra', label: 'Tierra', value: 4, icon: '🌱' },
+        {
+          id: 'fuego', label: 'Fuego', icon: '🔥',
+          value: 1
+        },
+        {
+          id: 'agua', label: 'Agua', icon: '💧',
+          value: 2
+        },
+        {
+          id: 'aire', label: 'Aire', icon: '🌬️',
+          value: 3
+        },
+        {
+          id: 'tierra', label: 'Tierra', icon: '🌱',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q2',
+      id: 'momento_dia',
       title: 'Elige el momento del día que prefieres',
       options: [
-        { id: 'amanecer', label: 'Amanecer', value: 1, icon: '🌅' },
-        { id: 'mediodia', label: 'Mediodía', value: 2, icon: '🌞' },
-        { id: 'atardecer', label: 'Atardecer', value: 3, icon: '🌇' },
-        { id: 'noche', label: 'Noche', value: 4, icon: '🌙' },
+        {
+          id: 'amanecer', label: 'Amanecer', icon: '🌅',
+          value: 1
+        },
+        {
+          id: 'mediodia', label: 'Mediodía', icon: '🌞',
+          value: 2
+        },
+        {
+          id: 'atardecer', label: 'Atardecer', icon: '🌇',
+          value: 3
+        },
+        {
+          id: 'noche', label: 'Noche', icon: '🌙',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q3',
+      id: 'flor',
       title: '¿Qué flor te inspira más?',
       options: [
-        { id: 'rosa', label: 'Rosa', value: 1, icon: '🌹' },
-        { id: 'lirio', label: 'Lirio', value: 2, icon: '🌺' },
-        { id: 'jazmin', label: 'Jazmín', value: 3, icon: '🌼' },
-        { id: 'lotus', label: 'Loto', value: 4, icon: '🪷' },
+        {
+          id: 'rosa', label: 'Rosa', icon: '🌹',
+          value: 1
+        },
+        {
+          id: 'lirio', label: 'Lirio', icon: '🌺',
+          value: 2
+        },
+        {
+          id: 'jazmin', label: 'Jazmín', icon: '🌼',
+          value: 3
+        },
+        {
+          id: 'loto', label: 'Loto', icon: '🪷',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q4',
+      id: 'sonido',
       title: 'Escoge un sonido que armonice tu espíritu',
       options: [
-        { id: 'olas', label: 'Olas del mar', value: 1, icon: '🌊' },
-        { id: 'lluvia', label: 'Lluvia suave', value: 2, icon: '🌧️' },
-        { id: 'viento', label: 'Viento entre árboles', value: 3, icon: '🍃' },
-        { id: 'campanas', label: 'Campanas tibetanas', value: 4, icon: '🔔' },
+        {
+          id: 'olas', label: 'Olas del mar', icon: '🌊',
+          value: 1
+        },
+        {
+          id: 'lluvia', label: 'Lluvia suave', icon: '🌧️',
+          value: 2
+        },
+        {
+          id: 'viento', label: 'Viento entre árboles', icon: '🍃',
+          value: 3
+        },
+        {
+          id: 'campanas', label: 'Campanas tibetanas', icon: '🔔',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q5',
+      id: 'cristal',
       title: '¿Qué cristal llevarías contigo?',
       options: [
-        { id: 'cuarzo', label: 'Cuarzo', value: 1, icon: '💎' },
-        { id: 'amatista', label: 'Amatista', value: 2, icon: '🔮' },
-        { id: 'obsidiana', label: 'Obsidiana', value: 3, icon: '⚫' },
-        { id: 'jade', label: 'Jade', value: 4, icon: '🟢' },
+        {
+          id: 'cuarzo', label: 'Cuarzo', icon: '💎',
+          value: 1
+        },
+        {
+          id: 'amatista', label: 'Amatista', icon: '🔮',
+          value: 2
+        },
+        {
+          id: 'obsidiana', label: 'Obsidiana', icon: '⚫',
+          value: 3
+        },
+        {
+          id: 'jade', label: 'Jade', icon: '🟢',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q6',
+      id: 'animal_guia',
       title: 'Elige un animal guía',
       options: [
-        { id: 'lobo', label: 'Lobo', value: 1, icon: '🐺' },
-        { id: 'gato', label: 'Gato', value: 2, icon: '🐱' },
-        { id: 'mariposa', label: 'Mariposa', value: 3, icon: '🦋' },
-        { id: 'lechuza', label: 'Lechuza', value: 4, icon: '🦉' },
+        {
+          id: 'lobo', label: 'Lobo', icon: '🐺',
+          value: 1
+        },
+        {
+          id: 'gato', label: 'Gato', icon: '🐱',
+          value: 2
+        },
+        {
+          id: 'mariposa', label: 'Mariposa', icon: '🦋',
+          value: 3
+        },
+        {
+          id: 'lechuza', label: 'Lechuza', icon: '🦉',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q7',
+      id: 'aroma',
       title: '¿Qué aroma calma tu mente?',
       options: [
-        { id: 'lavanda', label: 'Lavanda', value: 1, icon: '💜' },
-        { id: 'sandalwood', label: 'Sándalo', value: 2, icon: '🪵' },
-        { id: 'jazmin_aroma', label: 'Jazmín', value: 3, icon: '🌸' },
-        { id: 'cedro', label: 'Cedro', value: 4, icon: '🌲' },
+        {
+          id: 'lavanda', label: 'Lavanda', icon: '💜',
+          value: 1
+        },
+        {
+          id: 'sandalwood', label: 'Sándalo', icon: '🪵',
+          value: 2
+        },
+        {
+          id: 'jazmin_aroma', label: 'Jazmín', icon: '🌸',
+          value: 3
+        },
+        {
+          id: 'cedro', label: 'Cedro', icon: '🌲',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q8',
+      id: 'camino',
       title: 'Elige un camino para recorrer',
       options: [
-        { id: 'bosque', label: 'Bosque', value: 1, icon: '🌳' },
-        { id: 'montana', label: 'Montaña', value: 2, icon: '⛰️' },
-        { id: 'playa', label: 'Playa', value: 3, icon: '🏖️' },
-        { id: 'desierto', label: 'Desierto', value: 4, icon: '🏜️' },
+        {
+          id: 'bosque', label: 'Bosque', icon: '🌳',
+          value: 1
+        },
+        {
+          id: 'montana', label: 'Montaña', icon: '⛰️',
+          value: 2
+        },
+        {
+          id: 'playa', label: 'Playa', icon: '🏖️',
+          value: 3
+        },
+        {
+          id: 'desierto', label: 'Desierto', icon: '🏜️',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q9',
+      id: 'estacion',
       title: '¿Cuál estación del año prefieres?',
       options: [
-        { id: 'primavera', label: 'Primavera', value: 1, icon: '🌷' },
-        { id: 'verano', label: 'Verano', value: 2, icon: '☀️' },
-        { id: 'otono', label: 'Otoño', value: 3, icon: '🍂' },
-        { id: 'invierno', label: 'Invierno', value: 4, icon: '❄️' },
+        {
+          id: 'primavera', label: 'Primavera', icon: '🌷',
+          value: 1
+        },
+        {
+          id: 'verano', label: 'Verano', icon: '☀️',
+          value: 2
+        },
+        {
+          id: 'otono', label: 'Otoño', icon: '🍂',
+          value: 3
+        },
+        {
+          id: 'invierno', label: 'Invierno', icon: '❄️',
+          value: 4
+        },
       ],
     },
     {
-      id: 'q10',
+      id: 'color',
       title: 'Escoge el color que más conecte contigo',
       options: [
-        { id: 'rojo', label: 'Rojo', value: 1, icon: '❤️' },
-        { id: 'azul', label: 'Azul', value: 2, icon: '💙' },
-        { id: 'verde', label: 'Verde', value: 3, icon: '💚' },
-        { id: 'violeta', label: 'Violeta', value: 4, icon: '💜' },
+        {
+          id: 'rojo', label: 'Rojo', icon: '❤️',
+          value: 1
+        },
+        {
+          id: 'azul', label: 'Azul', icon: '💙',
+          value: 2
+        },
+        {
+          id: 'verde', label: 'Verde', icon: '💚',
+          value: 3
+        },
+        {
+          id: 'violeta', label: 'Violeta', icon: '💜',
+          value: 4
+        },
       ],
     },
   ];

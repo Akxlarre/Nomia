@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       class="pointer-events-none fixed inset-0 -z-10 opacity-20 animate-pulse-slow"
       aria-hidden="true"
     >
-      <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20"></div>
+      <div class="absolute inset-0 bg-base-100"></div>
     </div>
   `,
 })
