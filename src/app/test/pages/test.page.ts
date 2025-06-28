@@ -8,14 +8,12 @@ import {
   AnimatedBackgroundComponent,
 } from '../components';
 import { QuizService } from '../services/quiz.service';
-import { NgIf } from '@angular/common';
 import { Question } from '../components/question-viewer.component';
 
 @Component({
   standalone: true,
   selector: 'app-test-page',
   imports: [
-    NgIf,
     TestHeaderComponent,
     TestProgressComponent,
     QuestionViewerComponent,
@@ -32,7 +30,7 @@ import { Question } from '../components/question-viewer.component';
         [selected]="answers[questions[current].id]"
         (choose)="onChoose($event)"
       />
-      <ng-container *ngIf="!finished">
+      @if (!finished) {
         <app-navigation-buttons
           [canPrev]="current > 0"
           [canNext]="isAnswered(questions[current])"
@@ -40,11 +38,13 @@ import { Question } from '../components/question-viewer.component';
           (prev)="prev()"
           (next)="next()"
         />
-      </ng-container>
-      <div *ngIf="finished" class="text-center mt-8">
-        <p class="text-xl font-serif mb-4">Tu alma ya eligió. Estamos preparando tu carta…</p>
-        <span class="loading loading-spinner loading-lg text-accent"></span>
-      </div>
+      }
+      @if (finished) {
+        <div class="text-center mt-8">
+          <p class="text-xl font-serif mb-4">Tu alma ya eligió. Estamos preparando tu carta…</p>
+          <span class="loading loading-spinner loading-lg text-accent"></span>
+        </div>
+      }
     </section>
   `,
 })
@@ -54,7 +54,10 @@ export class TestPage {
   current = 0;
   finished = false;
 
-  constructor(private quiz: QuizService, private router: Router) {
+  constructor(
+    private quiz: QuizService,
+    private router: Router
+  ) {
     this.questions = this.quiz.questions;
   }
 
