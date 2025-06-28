@@ -1,52 +1,51 @@
 // src/app/result/pages/result.page.ts
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NatalCardComponent, PrimaryButtonComponent } from '../../shared/components';
+import { PrimaryButtonComponent } from '../../shared/components';
+import { FreeNameCardComponent } from '../components/free-name-card.component';
+import { LockedNameCardComponent } from '../components/locked-name-card.component';
 
 @Component({
   standalone: true,
   selector: 'app-result-page',
-  imports: [CommonModule, RouterModule, NatalCardComponent, PrimaryButtonComponent],
+  imports: [RouterModule, PrimaryButtonComponent, FreeNameCardComponent, LockedNameCardComponent],
   template: `
-    <section class="max-w-2xl mx-auto px-4 py-16 text-center relative">
-      <h1 class="text-4xl md:text-5xl font-serif mb-4">Tu alma ha hablado</h1>
-      <p class="text-base md:text-lg mb-8 opacity-80 italic">
-        Aquí están los nombres que vibran contigo...
-      </p>
+    <section class="max-w-3xl mx-auto px-4 py-16 text-center">
+      <h2 class="text-4xl font-serif mb-6 animate-fade-in-up">
+        ✨ Tu primer nombre con alma es...
+      </h2>
 
-      <div class="grid gap-6 md:grid-cols-2">
-        <!-- Card 1: gratuita -->
-        <ui-natal-card name="Amariel">
-          <p class="text-base italic">Significa: “la luz que renace”</p>
-        </ui-natal-card>
+      <ui-free-name-card
+        [name]="result.name"
+        [meaning]="result.meaning"
+        [symbol]="result.symbol"
+        class="mb-12 animate-fade-in-up"
+      />
 
-        <!-- Cards bloqueadas -->
-        @for (i of [1, 2, 3, 4]; track i) {
-          <div class="relative border border-base-300 bg-base-100 rounded-xl p-6 opacity-60 shadow-inner">
-            <p class="text-lg font-serif mb-2 text-base-content/70">🔒 Nombre bloqueado</p>
-            <p class="text-sm text-base-content/50">Compra para desbloquear este nombre único.</p>
+      <div class="relative">
+        <h3 class="text-xl font-serif mb-4 opacity-80 animate-fade-in">
+          Otros nombres te esperan...
+        </h3>
 
-            <div class="mt-4">
-              <a routerLink="/pay">
-                <ui-primary-button class="w-full">✨ Ver este nombre</ui-primary-button>
-              </a>
-            </div>
+        <div class="flex gap-4 overflow-x-auto snap-x px-2 sm:px-0">
+          @for (i of [1, 2, 3, 4]; track i) {
+            <ui-locked-name-card class="snap-center min-w-[260px] max-w-[280px]" />
+          }
+        </div>
 
-            <div
-              class="absolute -top-4 -right-4 w-10 h-10 bg-accent/20 rounded-full blur-2xl"
-              aria-hidden="true"
-            ></div>
-          </div>
-        }
-      </div>
-
-      <div class="mt-12">
-        <a routerLink="/pay">
-          <ui-primary-button class="text-lg px-8 py-4">🔓 Quiero ver más nombres</ui-primary-button>
-        </a>
+        <div class="mt-10 animate-fade-in-up delay-300">
+          <ui-primary-button routerLink="/pay">
+            🔓 Desbloquear todos los nombres
+          </ui-primary-button>
+        </div>
       </div>
     </section>
   `,
 })
-export class ResultPageComponent {}
+export class ResultPageComponent {
+  result = {
+    name: 'Lunara',
+    meaning: 'Aquella que refleja la luz del alma',
+    symbol: '🌙 Luz espiritual',
+  };
+}
