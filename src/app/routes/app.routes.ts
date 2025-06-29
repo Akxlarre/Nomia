@@ -19,6 +19,10 @@ export const appRoutes: Routes = [
         loadComponent: () => import('../result/pages/result.page').then(m => m.ResultPageComponent),
       },
       {
+        path: 'results-final',
+        loadComponent: () => import('../result/pages/results-final.page').then(m => m.ResultsFinalPage),
+      },
+      {
         path: 'pay',
         loadComponent: () => import('../pay/pages/payment-redirect.page').then(m => m.PaymentRedirectPage),
       },
