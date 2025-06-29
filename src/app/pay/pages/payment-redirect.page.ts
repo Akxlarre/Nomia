@@ -18,7 +18,7 @@ import { Component } from '@angular/core';
       </p>
 
       <div class="relative w-56 mx-auto">
-        <progress class="progress progress-primary w-full animate-pulse" />
+        <progress class="progress progress-primary w-full animate-pulse"></progress>
         <div class="absolute top-0 left-0 right-0 flex justify-center text-2xl -mt-7 text-accent">
           ✦ ✦ ✦
         </div>
