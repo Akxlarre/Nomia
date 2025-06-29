@@ -18,16 +18,17 @@ import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scrol
       </header>
 
       <div class="space-y-16">
-        <ui-nombre-revelado
-          *ngFor="let n of nombres; trackBy: trackNombre"
-          [nombre]="n.nombre"
-          [significado]="n.significado"
-          [simbolo]="n.simbolo"
-          [numerologia]="n.numerologia"
-          [famosos]="n.famosos"
-          [esIA]="n.esIA"
-          appRevealOnScroll
-        />
+        @for (n of nombres; track n.nombre) {
+          <ui-nombre-revelado
+            [nombre]="n.nombre"
+            [significado]="n.significado"
+            [simbolo]="n.simbolo"
+            [numerologia]="n.numerologia"
+            [famosos]="n.famosos"
+            [esIA]="n.esIA"
+            appRevealOnScroll
+          />
+        }
       </div>
     </section>
   `,
@@ -60,7 +61,4 @@ export class ResultsFinalPage {
     },
   ];
 
-  trackNombre(_: number, item: { nombre: string }) {
-    return item.nombre;
-  }
 }
