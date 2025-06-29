@@ -23,7 +23,11 @@ export const appRoutes: Routes = [
         loadComponent: () => import('../result/pages/results-final.page').then(m => m.ResultsFinalPage),
       },
       {
-        path: 'pay',
+        path: 'purchase',
+        loadComponent: () => import('../pay/pages/purchase.page').then(m => m.PurchasePageComponent),
+      },
+      {
+        path: 'payment/redirect',
         loadComponent: () => import('../pay/pages/payment-redirect.page').then(m => m.PaymentRedirectPage),
       },
     ],
