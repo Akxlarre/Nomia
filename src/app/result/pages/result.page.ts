@@ -43,7 +43,7 @@ import { LockedNameCardComponent } from '../components/locked-name-card.componen
 
       <!-- Botón CTA + beneficios -->
       <div class="mt-12 animate-fade-in-up delay-700 space-y-3">
-        <ui-primary-button routerLink="/pay">
+        <ui-primary-button routerLink="/purchase">
           🔓 Desbloquear los 4 nombres restantes
         </ui-primary-button>
 
