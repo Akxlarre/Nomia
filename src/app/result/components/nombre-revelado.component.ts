@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
       class="relative rounded-2xl px-6 py-8 shadow-xl transition-all duration-500 max-w-2xl mx-auto
               border border-base-300 bg-base-100/90 text-center overflow-hidden"
       [class.border-amber-400]="esIA"
-      [class.shadow-amber-300/40]="esIA"
+      [class.shadow-amber-300]="esIA"
     >
       @if (esIA) {
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-yellow-400/10 blur-[80px] rounded-full z-0 pointer-events-none animate-pulse-slower"></div>
