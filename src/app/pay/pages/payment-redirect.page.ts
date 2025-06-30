@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
         Procesando tu pago...
       </h2>
       <p class="text-base font-sans text-base-content/70 italic mb-8 animate-fade-in delay-200">
-        Estamos confirmando tu desbloqueo espiritual.
+        Estamos confirmando tu desbloqueo.
       </p>
 
       <div class="relative w-56 mx-auto">
