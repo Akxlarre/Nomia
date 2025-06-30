@@ -30,6 +30,10 @@ export const appRoutes: Routes = [
         path: 'payment/redirect',
         loadComponent: () => import('../pay/pages/payment-redirect.page').then(m => m.PaymentRedirectPage),
       },
+      {
+        path: 'payment/failure',
+        loadComponent: () => import('../pay/pages/payment-failure.page').then(m => m.PaymentFailurePage),
+      },
     ],
   },
 ];
