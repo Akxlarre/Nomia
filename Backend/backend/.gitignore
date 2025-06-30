@@ -1,0 +1,44 @@
+# Entorno virtual
+.venv/
+env/
+ENV/
+venv/
+
+# Byte-compiled Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Migrations de Alembic (opcional: si quieres versionar sólo el directorio general, ignora sólo las versiones)
+alembic/versions/
+
+# dotenv
+.env
+.env.*
+
+# Archivos de base de datos locales
+*.sqlite3
+instance/
+
+# Cachés de pytest
+.pytest_cache/
+
+# Archivos de empaquetado/distribución
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+
+# Archivos de editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Coverage
+htmlcov/
+.coverage
