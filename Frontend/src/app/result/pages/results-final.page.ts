@@ -25,8 +25,8 @@ import { NameGeneratorService, Name } from '../../names/services/name-generator.
             [significado]="n.significado"
             [simbolo]="n.simbolo"
             [numerologia]="n.numerologia"
-            [famosos]="n.famosos"
-            [esIA]="n.esIA"
+            [famosos]="n.famosos || ''"
+            [esIA]="n.ia_generado"
             appRevealOnScroll
           />
         }
