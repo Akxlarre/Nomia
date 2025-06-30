@@ -11,8 +11,10 @@ import { RouterModule } from '@angular/router';
         <ul>
           <li><a routerLink="/admin/dashboard">Dashboard</a></li>
           <li><a routerLink="/admin/usuarios">Usuarios</a></li>
-          <li><a routerLink="/admin/test-resultados">Test</a></li>
+          <li><a routerLink="/admin/test-resultados">Resultados</a></li>
           <li><a routerLink="/admin/nombres-generados">Nombres</a></li>
+          <li><a routerLink="/admin/estadisticas">Estadísticas</a></li>
+          <li><a routerLink="/admin/contenidos">Contenidos</a></li>
         </ul>
       </nav>
     </aside>

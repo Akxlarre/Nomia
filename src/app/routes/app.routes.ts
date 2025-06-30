@@ -52,6 +52,26 @@ export const appRoutes: Routes = [
         path: 'dashboard',
         loadComponent: () => import('../admin/pages/dashboard.page').then(m => m.DashboardPage),
       },
+      {
+        path: 'usuarios',
+        loadComponent: () => import('../admin/pages/users.page').then(m => m.UsersPage),
+      },
+      {
+        path: 'test-resultados',
+        loadComponent: () => import('../admin/pages/test-results.page').then(m => m.TestResultsPage),
+      },
+      {
+        path: 'nombres-generados',
+        loadComponent: () => import('../admin/pages/generated-names.page').then(m => m.GeneratedNamesPage),
+      },
+      {
+        path: 'estadisticas',
+        loadComponent: () => import('../admin/pages/stats.page').then(m => m.StatsPage),
+      },
+      {
+        path: 'contenidos',
+        loadComponent: () => import('../admin/pages/contents.page').then(m => m.ContentsPage),
+      },
     ],
   },
 ];
