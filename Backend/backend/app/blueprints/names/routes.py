@@ -13,9 +13,17 @@ def create_name():
     Recibe JSON:
     {
       nombre: string,
-      significado: string,
-      simbolo: string,
-      ia_generado: bool
+      significado?: string,
+      simbolo?: string,
+      origen?: string[],
+      energia?: string[],
+      personalidad?: string[],
+      sonoridad?: string,
+      estilo?: string,
+      numerologia?: string,
+      personajes_famosos?: string[],
+      ia_generado?: bool,
+      visible?: bool
     }
     """
     data = request.get_json() or {}
@@ -27,7 +35,15 @@ def create_name():
         nombre      = data["nombre"],
         significado = data.get("significado"),
         simbolo     = data.get("simbolo"),
+        origen      = data.get("origen", []),
+        energia     = data.get("energia", []),
+        personalidad = data.get("personalidad", []),
+        sonoridad   = data.get("sonoridad"),
+        estilo      = data.get("estilo"),
+        numerologia = data.get("numerologia"),
+        personajes_famosos = data.get("personajes_famosos", []),
         ia_generado = data.get("ia_generado", False),
+        visible     = data.get("visible", True),
     )
     db.session.add(name)
     db.session.commit()

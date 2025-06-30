@@ -1,10 +1,14 @@
 //app/test/services/quiz.service.ts
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Question } from '../components/question-viewer.component';
 import { QuizProfile } from '../../shared/models/quiz-profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class QuizService {
+  constructor(private http: HttpClient) {}
+
   questions: Question[] = [
     {
       id: 'energia_simbolica',
@@ -104,7 +108,7 @@ export class QuizService {
     },
   ];
 
-  submitAnswers(answers: Record<string, any>) {
+  submitAnswers(answers: Record<string, any>): Observable<any> {
     const profile: QuizProfile = {
       energia_simbolica: answers['energia_simbolica'] || [],
       personalidad_proyectada: answers['personalidad_proyectada'] || [],
@@ -130,6 +134,6 @@ export class QuizService {
       profile.epoca_inspiradora = opt.epocaInspiradora || '';
     }
 
-    console.log('Enviando quizProfile', profile);
+    return this.http.post('/api/test', { quiz_profile: profile });
   }
 }
