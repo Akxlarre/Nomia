@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NombreReveladoComponent } from '../components/nombre-revelado.component';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
+import { NameGeneratorService, Name } from '../../names/services/name-generator.service';
 
 @Component({
   standalone: true,
@@ -34,31 +35,15 @@ import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scrol
   `,
 })
 export class ResultsFinalPage {
-  nombres = [
-    {
-      nombre: 'Aurelia',
-      significado: 'Aquella que brilla con luz dorada',
-      simbolo: '🌞 Sol espiritual',
-      numerologia: '7 – Sabiduría interior y visión',
-      famosos: 'Aurelia Plath (madre de Sylvia Plath), símbolo de inspiración materna',
-      esIA: false,
-    },
-    {
-      nombre: 'Selene',
-      significado: 'La que danza bajo la luna',
-      simbolo: '🌙 Espíritu lunar',
-      numerologia: '9 – Sensibilidad elevada y alma universal',
-      famosos: 'Diosa griega de la luna, musa de artistas',
-      esIA: true,
-    },
-    {
-      nombre: 'Naela',
-      significado: 'La que trae bendiciones',
-      simbolo: '🌿 Pureza espiritual',
-      numerologia: '6 – Protección, armonía familiar y belleza interior',
-      famosos: 'Relacionado con raíces árabes, significado maternal y de sanación',
-      esIA: true,
-    },
-  ];
+  nombres: Name[] = [];
+
+  constructor(private nameService: NameGeneratorService) {
+    this.nameService.getPopular(3).subscribe(n => {
+      this.nombres = n.map(item => ({
+        ...item,
+        famosos: (item as any).personajes_famosos?.join(', ') || '',
+      }));
+    });
+  }
 
 }

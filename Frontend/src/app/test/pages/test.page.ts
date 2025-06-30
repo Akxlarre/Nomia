@@ -124,7 +124,7 @@ export class TestPage {
 
   private finish() {
     this.finished = true;
-    this.quiz.submitAnswers(this.answers);
+    this.quiz.submitAnswers(this.answers).subscribe();
     setTimeout(() => {
       this.router.navigateByUrl('/result');
     }, 2000);
