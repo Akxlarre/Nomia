@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from '../layout/layout.component';
+import { adminAuthGuard } from '../admin/services/admin-auth.guard';
+import { AdminLayoutComponent } from '../admin/components/admin-layout.component';
 
 export const appRoutes: Routes = [
   {
@@ -33,6 +35,42 @@ export const appRoutes: Routes = [
       {
         path: 'payment/failure',
         loadComponent: () => import('../pay/pages/payment-failure.page').then(m => m.PaymentFailurePage),
+      },
+    ],
+  },
+  {
+    path: 'admin/login',
+    loadComponent: () => import('../admin/pages/login.page').then(m => m.AdminLoginPage),
+  },
+  {
+    path: 'admin',
+    canActivate: [adminAuthGuard],
+    component: AdminLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      {
+        path: 'dashboard',
+        loadComponent: () => import('../admin/pages/dashboard.page').then(m => m.DashboardPage),
+      },
+      {
+        path: 'usuarios',
+        loadComponent: () => import('../admin/pages/users.page').then(m => m.UsersPage),
+      },
+      {
+        path: 'test-resultados',
+        loadComponent: () => import('../admin/pages/test-results.page').then(m => m.TestResultsPage),
+      },
+      {
+        path: 'nombres-generados',
+        loadComponent: () => import('../admin/pages/generated-names.page').then(m => m.GeneratedNamesPage),
+      },
+      {
+        path: 'estadisticas',
+        loadComponent: () => import('../admin/pages/stats.page').then(m => m.StatsPage),
+      },
+      {
+        path: 'contenidos',
+        loadComponent: () => import('../admin/pages/contents.page').then(m => m.ContentsPage),
       },
     ],
   },
